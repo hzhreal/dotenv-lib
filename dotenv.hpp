@@ -25,9 +25,12 @@ std::string obtainEnv(std::string fileName, std::string env, char seperator = '=
     while (std::getline (envFile, text)) {
         splitLine(text, tempEnv, value, seperator);
         if (tempEnv == env) {
+            envFile.close();
             return value;
         }
     }
+
+    envFile.close();
 
     return "";
 }
