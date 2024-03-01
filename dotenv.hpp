@@ -9,8 +9,10 @@ std::string obtainEnv(std::string line, std::string env, char seperator);
 static void splitLine(std::string line, std::string& env, std::string& value, char seperator);
 
 std::string obtainEnv(std::string fileName, std::string env, char seperator = '=') {
-    if (env.size() == 1 && env[0] == seperator) {
-        throw std::runtime_error("Env can not equal seperator.");
+    for (int i = 0; i <= env.size(); i++) {
+        if (env[i] == seperator) {
+            throw std::runtime_error("Env can not contain seperator.");
+        }
     }
 
     std::string text;
